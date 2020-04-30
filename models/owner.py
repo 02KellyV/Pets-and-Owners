@@ -9,7 +9,7 @@ from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 
-class State(BaseModel, Base):
+class Owner(BaseModel, Base):
     """Representation of state """
     firstname = ""
     lastname = ""
