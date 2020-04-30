@@ -11,8 +11,8 @@ from sqlalchemy.orm import relationship
 
 class State(BaseModel, Base):
     """Representation of state """
-        firstname = ""
-        lastname = ""
+    firstname = ""
+    lastname = ""
 
     def __init__(self, *args, **kwargs):
         """initializes state"""
