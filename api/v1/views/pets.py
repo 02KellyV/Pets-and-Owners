@@ -2,7 +2,7 @@
 """Contains pets view"""
 from api.v1.views import app_views
 from flask import Flask, Blueprint, jsonify, abort, make_response, request
-from models import storage, pets, owners
+from models import storage, pet, owner
 
 @app_views.route('/pets', 
                  methods=['GET'],
@@ -57,7 +57,7 @@ def pet_id_delete(pet_id):
 @app_views.route('owners/<owner_id>/pets',
                  methods=['POST'],
                  strict_slashes=False)
-def create_pet(pet_id):
+def create_pet(owner_id):
     """Creates a Pet object"""
     my_owner = storage.get('Owner', owner_id)
     if my_owner is None:

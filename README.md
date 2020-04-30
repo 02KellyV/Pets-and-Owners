@@ -23,7 +23,7 @@ No known bugs at this time.
 
 ## Authors
 Kelly Villa -
-Sata Hincapie -
+Sara Hincapie -
 Daniel Chinome -
 Jose Diaz -
 Edward Jimenéz -

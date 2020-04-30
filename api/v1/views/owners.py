@@ -16,8 +16,11 @@ def owners():
     """
     owners = []
     if request.method == 'GET':
-        all_owners = storage.all('Owner')
-        return jsonify(all_owners.to_dict())
+        all_dict_owners = []
+        all_owners = storage.all('Owner').values()
+        for obj in all_owners:
+            all_dict_owners.append(obj.to_dict())
+        return jsonify(all_dict_owners)
     elif request.method == 'POST':
         if not request.get_json():
             return jsonify('Not a Json'), 400
@@ -27,7 +30,7 @@ def owners():
         new_owner = Owner(**data)
         storage.new(new_owner)
         storage.save()
-        return jsonify(new_owner), 201
+        return jsonify(new_owner.to_dict()), 201
 
 
 @app_views.route('/owners/<owner_id>', methods=['PUT', 'DELETE'],
@@ -45,7 +48,7 @@ def owner_id(owner_id):
         data = request.get_json()
         for k, v in data.items():
             setattr(owner, k, v)
-        storage.save()
+        owner.save()
         return jsonify(owner.to_dict()), 201
     elif request.method == 'DELETE':
         storage.delete(owner)
